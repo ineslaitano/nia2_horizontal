@@ -68,10 +68,6 @@ $(document).ready(function() {
 	});
 });
 
-$(document).change(function() {
-    generateNIA();
-});
- 
 function generateFamilles(data) {
 	var html = '';
 	for(var row in data) {
@@ -82,15 +78,20 @@ function generateFamilles(data) {
 
 function generateStructures(data) {
 	for(var row in data) {
-		$('#famille' + data[row][1]).append( '<li class="couleur' + data[row][0] + '"><input type="checkbox" value="' + data[row][0] + '">' + data[row][2] + '</li>\r\n');
-		// //si el id_parent está vacío, se agrega a su familia. 
-		// if(data[row][3] =='') {
-			// $('#famille' + data[row][1]).append( '<li>' + data[row][2] + '</li>\r\n<ul id="structure' + data[row][0] + '"></ul>');
-		// }
-		// else //sino se agrega al id_parent
-		// {
-			// $('#structure' + data[row][3]).append( '<li>' + data[row][2] + '</li>\r\n<ul id="structure' + data[row][0] + '"></ul>');
-		// }
+		// genere une couleur pastel aleatoire
+		var couleur = randomPastel();
+		var id_str = data[row][0];
+		// asigne l'id_structure au id du checkbox et la couleur au name
+		var html = '<li><input type="checkbox" id="' + id_str + '" name="' + couleur + '">';
+		// ajoute une etiquette au checkbox
+		html += '<label for="' + id_str + '">' + data[row][2] + '</label></li>\r\n';
+		// ajoute la structure a sa famille
+		$('#famille' + data[row][1]).append(html);
+		// on change du checkbox
+		$('#' + id_str).change(function() {
+			$('label[for="' + this.id + '"]').css("background-color", this.name);
+			generateNIA();
+		});
 	}
 }
 
@@ -105,8 +106,8 @@ function generateNIA() {
 			for (var i = 0; i < $('input:checked').length; i++) {
 				//recherche dans media_ds_structure
 				for( var j = 0; j < arrMedStr.length; j++ ) {
-					if( arrMedStr[j][0] == arrMedias[row][0] && arrMedStr[j][1] == $('input:checked')[i].value) {
-						html += '<mark class="couleur' + arrMedStr[j][1] + '">';
+					if( arrMedStr[j][0] == arrMedias[row][0] && arrMedStr[j][1] == $('input:checked')[i].id) {
+						html += '<mark style="background-color:' + $('input:checked')[i].name + ';">';
 						balisesFermantes += '</mark>';
 						if (arrMedStr[j][2] == 'true'){
 							html += '<strong>';
@@ -136,4 +137,8 @@ function generateNIA() {
 		html += balisesFermantes;
 	}
 	$('#nia').append(html);
+}
+
+function randomPastel(){
+    return '#' + (function co(lor){   return (lor += ['a','b','c','d','e','f'][Math.floor(Math.random()*6)])&& (lor.length == 6) ?  lor : co(lor); })('');
 }
