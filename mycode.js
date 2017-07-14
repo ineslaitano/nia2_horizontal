@@ -87,7 +87,7 @@ function generateStructures(data) {
 		html += '<label for="' + id_str + '">' + data[row][2] + '</label></li>\r\n';
 		// ajoute la structure a sa famille
 		$('#famille' + data[row][1]).append(html);
-		// on change du checkbox
+		// onchange du checkbox
 		$('#' + id_str).change(function() {
 			if (this.checked) {
 				$('label[for="' + this.id + '"]').css('background-color', this.name);
@@ -156,7 +156,7 @@ function popup(elem)
 		//selectionne tous les mark qui ont la même couleur que le mark cliqué
 		var parag = $('#nia mark[style="background-color:' + colHex + '"]');
 		//cree un popup avec tout le texte
-		var html = '<p id="' + colHex.substring(1) + '" class="popup">';
+		var html = '<p id="' + colHex.substring(1) + '" class="popup" style="background-color:' + colHex + '">';
 		for (var i = 0; i < parag.length; i++) {
 			html += parag[i].innerHTML;
 		}
