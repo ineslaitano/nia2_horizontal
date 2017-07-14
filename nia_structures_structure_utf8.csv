@@ -1,0 +1,28 @@
+id_structure;id_famille;nom;id_parent;commentaire
+0;0;niveau 0;;
+1;0;niveau 1;0;
+2;0;niveau 2;1;
+3;0;niveau 3;2;
+4;0;niveau 4;3;
+5;0;niveau 5;4;
+6;0;niveau 6;5;
+7;0;niveau 7;6;
+8;0;niveau 8;7;
+9;0;niveau 9;8;
+10;1;ancre;;mots liés à l'ancre
+11;1;image;12;média image
+12;1;légende;13;commentaire à Zoo
+13;2;poseurs;;
+14;2;questions sans réponse;;
+15;2;gestes inutiles;;
+40;3;porte;;
+41;3;neuf;;
+42;3;asperge;;
+43;3;bout;;
+44;3;frais;;
+45;3;nice;;
+46;3;l'écoute;;
+47;3;arc;;
+48;3;été;;
+49;3;fils;;
+50;3;louche;;
