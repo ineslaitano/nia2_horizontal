@@ -89,7 +89,13 @@ function generateStructures(data) {
 		$('#famille' + data[row][1]).append(html);
 		// on change du checkbox
 		$('#' + id_str).change(function() {
-			$('label[for="' + this.id + '"]').css('background-color', this.name);
+			if (this.checked) {
+				$('label[for="' + this.id + '"]').css('background-color', this.name);
+			}
+			else
+			{
+				$('label[for="' + this.id + '"]').css('background-color', '#ffffff');
+			}
 			generateNIA();
 		});
 	}
