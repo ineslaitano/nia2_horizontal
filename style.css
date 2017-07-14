@@ -12,6 +12,10 @@ li
 	font-size: 0.7em;
 	display: flex;
 }
+p 
+{
+position: relative;
+}
 #nia
 {
 	font-family: Geneva;
@@ -19,5 +23,12 @@ li
 	transform: rotate(-90deg);
 	transform-origin: left top 0;
 	float: left;
-	margin-top: 10%;
+	top: 25em;
+}
+.popup
+{
+	border-style: solid;
+	float: left;
+	top: 5em;
+	padding: 0.5em;
 }

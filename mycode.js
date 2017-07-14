@@ -89,7 +89,7 @@ function generateStructures(data) {
 		$('#famille' + data[row][1]).append(html);
 		// on change du checkbox
 		$('#' + id_str).change(function() {
-			$('label[for="' + this.id + '"]').css("background-color", this.name);
+			$('label[for="' + this.id + '"]').css('background-color', this.name);
 			generateNIA();
 		});
 	}
@@ -107,7 +107,7 @@ function generateNIA() {
 				//recherche dans media_ds_structure
 				for( var j = 0; j < arrMedStr.length; j++ ) {
 					if( arrMedStr[j][0] == arrMedias[row][0] && arrMedStr[j][1] == $('input:checked')[i].id) {
-						html += '<mark style="background-color:' + $('input:checked')[i].name + ';">';
+						html += '<mark style="background-color:' + $('input:checked')[i].name + '" onclick="popup(this)">';
 						balisesFermantes += '</mark>';
 						if (arrMedStr[j][2] == 'true'){
 							html += '<strong>';
@@ -141,4 +141,30 @@ function generateNIA() {
 
 function randomPastel(){
     return '#' + (function co(lor){   return (lor += ['a','b','c','d','e','f'][Math.floor(Math.random()*6)])&& (lor.length == 6) ?  lor : co(lor); })('');
+}
+
+function popup(elem)
+{
+	var colHex = rgb2hex(elem.style.backgroundColor);
+	if ($(colHex).length == 0) {
+		//selectionne tous les mark qui ont la même couleur que le mark cliqué
+		var parag = $('#nia mark[style="background-color:' + colHex + '"]');
+		//cree un popup avec tout le texte
+		var html = '<p id="' + colHex.substring(1) + '" class="popup">';
+		for (var i = 0; i < parag.length; i++) {
+			html += parag[i].innerHTML;
+		}
+		html += '</p>';
+		$('body').append(html);
+	}
+}
+
+function rgb2hex(rgb) {
+    if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
+
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
