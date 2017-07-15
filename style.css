@@ -18,7 +18,8 @@ p
 }
 #nia
 {
-	font-family: Geneva;
+	font-family: Impact;
+	font-weight: 900;
 	font-size: 0.2em;
 	transform: rotate(-90deg);
 	transform-origin: left top 0;
