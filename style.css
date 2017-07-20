@@ -33,4 +33,9 @@ p
 	top: 5em;
 	padding: 0.5em;
 	margin-right: 1em;
+	cursor: move;
+}
+mark
+{
+	cursor:pointer;
 }

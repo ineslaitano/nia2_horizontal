@@ -155,12 +155,13 @@ function popup(elem)
 		//selectionne tous les mark qui ont la même couleur que le mark cliqué
 		var parag = $('#nia mark[style="background-color:' + colHex + '"]');
 		//cree un popup avec tout le texte
-		var html = '<p id="' + colHex.substring(1) + '" class="popup" style="background-color:' + colHex + '">';
+		var html = '<p id="' + colHex.substring(1) + '" class="popup ui-widget-content" style="background-color:' + colHex + '">';
 		for (var i = 0; i < parag.length; i++) {
 			html += parag[i].innerHTML;
 		}
 		html += '</p>';
 		$('body').append(html);
+		$(colHex).draggable();
 	}
 }
 
