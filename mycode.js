@@ -16,6 +16,7 @@ $(document).ready(function() {
 	  // colNum: 1
 		// }
 	// };
+	jQuery.ajaxSetup({async:false});
 	
 	$.ajax({
 	url: "nia_structures_famille_utf8.csv",
