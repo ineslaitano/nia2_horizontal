@@ -95,6 +95,8 @@ function generateStructures(data) {
 			else
 			{
 				$('label[for="' + this.id + '"]').css('background-color', '#ffffff');
+				// fermeture de la popup
+				$(this.name).remove();
 			}
 			generateNIA();
 		});
@@ -145,10 +147,6 @@ function generateNIA() {
 	$('#nia').append(html);
 }
 
-function randomPastel(){
-    return '#' + (function co(lor){   return (lor += ['a','b','c','d','e','f'][Math.floor(Math.random()*6)])&& (lor.length == 6) ?  lor : co(lor); })('');
-}
-
 function popup(elem)
 {
 	var colHex = rgb2hex(elem.style.backgroundColor);
@@ -174,3 +172,8 @@ function rgb2hex(rgb) {
     }
     return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
+
+function randomPastel(){
+    return '#' + (function co(lor){   return (lor += ['a','b','c','d','e','f'][Math.floor(Math.random()*6)])&& (lor.length == 6) ?  lor : co(lor); })('');
+}
+
